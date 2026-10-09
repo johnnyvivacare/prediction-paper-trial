@@ -1,0 +1,12 @@
+{
+  "test_method": "Offline browser render with actual demo state; HTTP endpoints tested separately in unittest. Live browser navigation was blocked by container browser policy.",
+  "demo_banner": true,
+  "equity_display": "$502.20",
+  "audit_display": "RECONCILED",
+  "backup_button_rendered": true,
+  "tabs": 5,
+  "rules_visible": true,
+  "mobile_document_width": 390,
+  "mobile_viewport_width": 390,
+  "page_errors": []
+}

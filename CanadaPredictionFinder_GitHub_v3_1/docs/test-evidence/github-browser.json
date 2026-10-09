@@ -1,0 +1,22 @@
+[
+  {
+    "viewport": "desktop",
+    "width": 1440,
+    "height": 1150,
+    "javascript_errors": [],
+    "horizontal_overflow": false,
+    "render_method": "local HTML injection and direct JS evaluation; HTTP navigation blocked by container browser policy",
+    "initial_equity": "US$500.00",
+    "initial_pnl": "US$0.00"
+  },
+  {
+    "viewport": "mobile",
+    "width": 390,
+    "height": 844,
+    "javascript_errors": [],
+    "horizontal_overflow": false,
+    "render_method": "local HTML injection and direct JS evaluation; HTTP navigation blocked by container browser policy",
+    "initial_equity": "US$500.00",
+    "initial_pnl": "US$0.00"
+  }
+]

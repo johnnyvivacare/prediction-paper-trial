@@ -1,0 +1,5 @@
+{
+  "profile": "minute-burst",
+  "trial_days": 7,
+  "checkpoint_samples_per_ticker": 360
+}

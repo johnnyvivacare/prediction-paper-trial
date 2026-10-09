@@ -1,0 +1,172 @@
+test_complement_price_and_size (test_core.CoreTests.test_complement_price_and_size) ... ok
+test_crossed_books_rejected (test_core.CoreTests.test_crossed_books_rejected) ... ok
+test_depth_cap_partial_fill (test_core.CoreTests.test_depth_cap_partial_fill) ... ok
+test_duplicate_levels_merged (test_core.CoreTests.test_duplicate_levels_merged) ... ok
+test_empty_books_no_fill (test_core.CoreTests.test_empty_books_no_fill) ... ok
+test_exact_money (test_core.CoreTests.test_exact_money) ... ok
+test_fee_floor_and_rounding (test_core.CoreTests.test_fee_floor_and_rounding) ... ok
+test_fee_future_rejected (test_core.CoreTests.test_fee_future_rejected) ... ok
+test_fee_metadata_fail_closed (test_core.CoreTests.test_fee_metadata_fail_closed) ... ok
+test_fingerprint_excludes_port_not_strategy (test_core.CoreTests.test_fingerprint_excludes_port_not_strategy) ... ok
+test_fractional_interval_rejected (test_core.CoreTests.test_fractional_interval_rejected) ... ok
+test_invalid_side (test_core.CoreTests.test_invalid_side) ... ok
+test_live_mode_rejected (test_core.CoreTests.test_live_mode_rejected) ... ok
+test_market_non_binary_rejected (test_core.CoreTests.test_market_non_binary_rejected) ... ok
+test_market_rules_required (test_core.CoreTests.test_market_rules_required) ... ok
+test_market_settlement_scalar_conflict_rejected (test_core.CoreTests.test_market_settlement_scalar_conflict_rejected) ... ok
+test_market_wrong_notional_rejected (test_core.CoreTests.test_market_wrong_notional_rejected) ... ok
+test_nan_config_rejected (test_core.CoreTests.test_nan_config_rejected) ... ok
+test_negative_depth_rejected (test_core.CoreTests.test_negative_depth_rejected) ... ok
+test_no_side_complement (test_core.CoreTests.test_no_side_complement) ... ok
+test_nonfinite_money (test_core.CoreTests.test_nonfinite_money) ... ok
+test_provisional_market_not_active (test_core.CoreTests.test_provisional_market_not_active) ... ok
+test_quote_change_does_not_change_rule_hash (test_core.CoreTests.test_quote_change_does_not_change_rule_hash) ... ok
+test_rule_changes_change_hash (test_core.CoreTests.test_rule_changes_change_hash) ... ok
+test_sell_uses_bid_not_ask (test_core.CoreTests.test_sell_uses_bid_not_ask) ... ok
+test_timestamp_offset_equivalence (test_core.CoreTests.test_timestamp_offset_equivalence) ... ok
+test_timezone_required (test_core.CoreTests.test_timezone_required) ... ok
+test_unknown_book_schema_rejected (test_core.CoreTests.test_unknown_book_schema_rejected) ... ok
+test_unknown_config_rejected (test_core.CoreTests.test_unknown_config_rejected) ... ok
+test_unprofitable_fee_exceeding_exit_is_not_free (test_core.CoreTests.test_unprofitable_fee_exceeding_exit_is_not_free) ... ok
+test_unsafe_event_risk_rejected (test_core.CoreTests.test_unsafe_event_risk_rejected) ... ok
+test_unsupported_precision (test_core.CoreTests.test_unsupported_precision) ... ok
+test_audit_detects_cash_corruption (test_engine.EngineTests.test_audit_detects_cash_corruption) ... ok
+test_backup_is_consistent (test_engine.EngineTests.test_backup_is_consistent) ... ok
+test_bootstrap_small_sample_not_confidence (test_engine.EngineTests.test_bootstrap_small_sample_not_confidence) ... ok
+test_canada_verification_gate_blocks_unverified_feed (test_engine.EngineTests.test_canada_verification_gate_blocks_unverified_feed) ... ok
+test_changed_rules_do_not_credit (test_engine.EngineTests.test_changed_rules_do_not_credit) ... ok
+test_changed_rules_do_not_exit_or_refresh_mark (test_engine.EngineTests.test_changed_rules_do_not_exit_or_refresh_mark) ... ok
+test_closed_is_not_final_settlement (test_engine.EngineTests.test_closed_is_not_final_settlement) ... ok
+test_csv_arbitrary_table_rejected (test_engine.EngineTests.test_csv_arbitrary_table_rejected) ... ok
+test_csv_formula_injection_escaped (test_engine.EngineTests.test_csv_formula_injection_escaped) ... ok
+test_daily_loss_circuit (test_engine.EngineTests.test_daily_loss_circuit) ... ok
+test_delayed_confirmation_restarts (test_engine.EngineTests.test_delayed_confirmation_restarts) ... ok
+test_demo_cannot_mix_with_paper (test_engine.EngineTests.test_demo_cannot_mix_with_paper) ... ok
+test_drawdown_halt_latches (test_engine.EngineTests.test_drawdown_halt_latches) ... ok
+test_duplicate_protection (test_engine.EngineTests.test_duplicate_protection) ... ok
+test_early_finalization_rejected (test_engine.EngineTests.test_early_finalization_rejected) ... ok
+test_empirical_forecast_requires_enough_draws (test_engine.EngineTests.test_empirical_forecast_requires_enough_draws) ... ok
+test_entries_fit_two_percent_including_fees (test_engine.EngineTests.test_entries_fit_two_percent_including_fees) ... ok
+test_event_group_exposure_not_ticker_only (test_engine.EngineTests.test_event_group_exposure_not_ticker_only) ... ok
+test_exact_four_point_forecast_interval (test_engine.EngineTests.test_exact_four_point_forecast_interval) ... ok
+test_expired_forecast_rejected (test_engine.EngineTests.test_expired_forecast_rejected) ... ok
+test_first_entry_freezes_actual_configuration (test_engine.EngineTests.test_first_entry_freezes_actual_configuration) ... ok
+test_forecast_invalid_probabilities_rejected (test_engine.EngineTests.test_forecast_invalid_probabilities_rejected) ... ok
+test_forecast_no_lookahead (test_engine.EngineTests.test_forecast_no_lookahead) ... ok
+test_forecast_rules_must_match (test_engine.EngineTests.test_forecast_rules_must_match) ... ok
+test_forecast_uses_interval_not_point (test_engine.EngineTests.test_forecast_uses_interval_not_point) ... ok
+test_fresh_bid_mark_includes_exit_cost (test_engine.EngineTests.test_fresh_bid_mark_includes_exit_cost) ... ok
+test_future_book_cannot_open (test_engine.EngineTests.test_future_book_cannot_open) ... ok
+test_ledger_survives_restart_without_reset (test_engine.EngineTests.test_ledger_survives_restart_without_reset) ... ok
+test_legacy_db_rejected (test_engine.EngineTests.test_legacy_db_rejected) ... ok
+test_losing_settlement_zero_payout (test_engine.EngineTests.test_losing_settlement_zero_payout) ... ok
+test_manual_paper_exit_requires_fresh_book (test_engine.EngineTests.test_manual_paper_exit_requires_fresh_book) ... ok
+test_mark_age_uses_actual_fetch_time (test_engine.EngineTests.test_mark_age_uses_actual_fetch_time) ... ok
+test_mismatched_book_cannot_mark (test_engine.EngineTests.test_mismatched_book_cannot_mark) ... ok
+test_mismatched_book_identity_rejected (test_engine.EngineTests.test_mismatched_book_identity_rejected) ... ok
+test_no_exit_same_observation (test_engine.EngineTests.test_no_exit_same_observation) ... ok
+test_no_report_enables_live_execution (test_engine.EngineTests.test_no_report_enables_live_execution) ... ok
+test_no_same_tick_confirmation (test_engine.EngineTests.test_no_same_tick_confirmation) ... ok
+test_no_side_trade_and_settlement (test_engine.EngineTests.test_no_side_trade_and_settlement) ... ok
+test_partial_depth_not_full_nav (test_engine.EngineTests.test_partial_depth_not_full_nav) ... ok
+test_partial_exit_preserves_remaining_and_audit (test_engine.EngineTests.test_partial_exit_preserves_remaining_and_audit) ... ok
+test_pause_blocks_entries (test_engine.EngineTests.test_pause_blocks_entries) ... ok
+test_pause_does_not_block_exit (test_engine.EngineTests.test_pause_does_not_block_exit) ... ok
+test_provisional_settlement_rejected (test_engine.EngineTests.test_provisional_settlement_rejected) ... ok
+test_reversion_produces_price_target_not_forecast (test_engine.EngineTests.test_reversion_produces_price_target_not_forecast) ... ok
+test_reversion_rejects_long_history_gap (test_engine.EngineTests.test_reversion_rejects_long_history_gap) ... ok
+test_reversion_rejects_too_dense_samples (test_engine.EngineTests.test_reversion_rejects_too_dense_samples) ... ok
+test_reversion_warmup_required (test_engine.EngineTests.test_reversion_warmup_required) ... ok
+test_settlement_yes_credits_once (test_engine.EngineTests.test_settlement_yes_credits_once) ... ok
+test_stale_book_cannot_open (test_engine.EngineTests.test_stale_book_cannot_open) ... ok
+test_stale_marks_make_nav_unknown (test_engine.EngineTests.test_stale_marks_make_nav_unknown) ... ok
+test_strategy_change_does_not_mix_after_first_trade (test_engine.EngineTests.test_strategy_change_does_not_mix_after_first_trade) ... ok
+test_two_scan_confirmation (test_engine.EngineTests.test_two_scan_confirmation) ... ok
+test_unknown_fee_cannot_open (test_engine.EngineTests.test_unknown_fee_cannot_open) ... ok
+test_already_completed_run_skipped (test_github.BatchTests.test_already_completed_run_skipped) ... ok
+test_engine_exception_pauses_entries (test_github.BatchTests.test_engine_exception_pauses_entries) ... ERROR:root:Paper engine batch stopped
+Traceback (most recent call last):
+  File "/mnt/data/CanadaPredictionFinder_GitHub_v3_1/github_support/runner.py", line 123, in scan_batch
+    runtime.cycle();completed+=1
+    ~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.13/unittest/mock.py", line 1169, in __call__
+    return self._mock_call(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/unittest/mock.py", line 1173, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/unittest/mock.py", line 1228, in _execute_mock_call
+    raise effect
+RuntimeError: boom
+ok
+test_expired_trial_no_scans (test_github.BatchTests.test_expired_trial_no_scans) ... ok
+test_expiry_mid_batch_respected (test_github.BatchTests.test_expiry_mid_batch_respected) ... ok
+test_five_minute_spaced_scans (test_github.BatchTests.test_five_minute_spaced_scans) ... ok
+test_older_rerun_after_new_run_skipped (test_github.BatchTests.test_older_rerun_after_new_run_skipped) ... ok
+test_pause_preserved_between_batches (test_github.BatchTests.test_pause_preserved_between_batches) ... ok
+test_slow_scan_does_not_burst_catch_up (test_github.BatchTests.test_slow_scan_does_not_burst_catch_up) ... ok
+test_unknown_scan_count_rejected (test_github.BatchTests.test_unknown_scan_count_rejected) ... ok
+test_backoff_converts_monotonic_to_wall_clock (test_github.CacheAndReportTests.test_backoff_converts_monotonic_to_wall_clock) ... ok
+test_compaction_keeps_latest_samples (test_github.CacheAndReportTests.test_compaction_keeps_latest_samples) ... ok
+test_no_live_orders_in_public_snapshot (test_github.CacheAndReportTests.test_no_live_orders_in_public_snapshot) ... ok
+test_private_fields_excluded_from_report (test_github.CacheAndReportTests.test_private_fields_excluded_from_report) ... ok
+test_report_initial_cash_not_fabricated_profit (test_github.CacheAndReportTests.test_report_initial_cash_not_fabricated_profit) ... ok
+test_static_report_relative_script (test_github.CacheAndReportTests.test_static_report_relative_script) ... ok
+test_cannot_overwrite_existing_directory (test_github.CheckpointTests.test_cannot_overwrite_existing_directory) ... ok
+test_corrupted_checkpoint_stops (test_github.CheckpointTests.test_corrupted_checkpoint_stops) ... ok
+test_invalid_account_not_checkpointed (test_github.CheckpointTests.test_invalid_account_not_checkpointed) ... ok
+test_missing_cash_record_rejected_on_restore (test_github.CheckpointTests.test_missing_cash_record_rejected_on_restore) ... ok
+test_missing_checkpoint_not_empty_account (test_github.CheckpointTests.test_missing_checkpoint_not_empty_account) ... ok
+test_plaintext_not_visible_in_ciphertext (test_github.CheckpointTests.test_plaintext_not_visible_in_ciphertext) ... ok
+test_repository_identity_mismatch_stops (test_github.CheckpointTests.test_repository_identity_mismatch_stops) ... ok
+test_roundtrip_audit_and_persistence (test_github.CheckpointTests.test_roundtrip_audit_and_persistence) ... ok
+test_wrong_secret_stops_no_reset (test_github.CheckpointTests.test_wrong_secret_stops_no_reset) ... ok
+test_zip_traversal_not_extracted (test_github.CheckpointTests.test_zip_traversal_not_extracted) ... ok
+test_dex_repository_guard (test_github.EndToEndCloudTests.test_dex_repository_guard) ... ok
+test_initialization_then_scan_retains_executed_paper_fills (test_github.EndToEndCloudTests.test_initialization_then_scan_retains_executed_paper_fills) ... ok
+test_manual_initialization_confirmation_required (test_github.EndToEndCloudTests.test_manual_initialization_confirmation_required) ... ok
+test_private_cost_acknowledgement_required (test_github.EndToEndCloudTests.test_private_cost_acknowledgement_required) ... ok
+test_reinitialize_refuses_to_replace_existing_experiment (test_github.EndToEndCloudTests.test_reinitialize_refuses_to_replace_existing_experiment) ... ok
+test_conflicting_writer_rejected_by_lease (test_github.GitStateTests.test_conflicting_writer_rejected_by_lease) ... ok
+test_missing_remote_requires_initialization (test_github.GitStateTests.test_missing_remote_requires_initialization) ... ok
+test_no_fetch_no_write (test_github.GitStateTests.test_no_fetch_no_write) ... ok
+test_only_reserved_branch_can_be_written (test_github.GitStateTests.test_only_reserved_branch_can_be_written) ... ok
+test_remote_contents_allowlist (test_github.GitStateTests.test_remote_contents_allowlist) ... ok
+test_roundtrip_and_previous_checkpoint (test_github.GitStateTests.test_roundtrip_and_previous_checkpoint) ... ok
+test_state_push_does_not_touch_source (test_github.GitStateTests.test_state_push_does_not_touch_source) ... ok
+test_state_unreachable_does_not_initialize (test_github.GitStateTests.test_state_unreachable_does_not_initialize) ... ok
+test_economy_is_explicit_300_seconds (test_github.ProfileTests.test_economy_is_explicit_300_seconds) ... ok
+test_linebreak_passphrase_rejected (test_github.ProfileTests.test_linebreak_passphrase_rejected) ... ok
+test_profile_rejects_unknown_fields (test_github.ProfileTests.test_profile_rejects_unknown_fields) ... ok
+test_profile_valid (test_github.ProfileTests.test_profile_valid) ... ok
+test_reject_unbounded_trial (test_github.ProfileTests.test_reject_unbounded_trial) ... ok
+test_short_passphrase_rejected (test_github.ProfileTests.test_short_passphrase_rejected) ... ok
+test_database_backup_limit (test_integration.IntegrationTests.test_database_backup_limit) ... ok
+test_demo_does_not_repopulate_profit (test_integration.IntegrationTests.test_demo_does_not_repopulate_profit) ... ok
+test_demo_reconciles_and_stays_separate (test_integration.IntegrationTests.test_demo_reconciles_and_stays_separate) ... ok
+test_headless_report_state (test_integration.IntegrationTests.test_headless_report_state) ... ok
+test_replay_is_chronological_and_auditable (test_integration.IntegrationTests.test_replay_is_chronological_and_auditable) ... ok
+test_replay_refuses_overwrite (test_integration.IntegrationTests.test_replay_refuses_overwrite) ... ok
+test_single_instance (test_integration.IntegrationTests.test_single_instance) ... ok
+test_source_failure_does_not_fabricate_trades (test_integration.IntegrationTests.test_source_failure_does_not_fabricate_trades) ... ok
+test_404_not_global_lockout (test_integration.NetworkTests.test_404_not_global_lockout) ... ok
+test_access_denied_no_bypass (test_integration.NetworkTests.test_access_denied_no_bypass) ... ok
+test_cached_feed_rejected (test_integration.NetworkTests.test_cached_feed_rejected) ... ok
+test_rate_limit_retry_after (test_integration.NetworkTests.test_rate_limit_retry_after) ... ok
+test_redirects_rejected (test_integration.NetworkTests.test_redirects_rejected) ... ok
+test_valid_get_and_json (test_integration.NetworkTests.test_valid_get_and_json) ... ok
+test_write_account_and_arbitrary_routes_rejected (test_integration.NetworkTests.test_write_account_and_arbitrary_routes_rejected) ... ok
+test_export_and_report (test_integration.ServerTests.test_export_and_report) ... ok
+test_host_header_blocks_dns_rebinding (test_integration.ServerTests.test_host_header_blocks_dns_rebinding) ... ok
+test_mutation_requires_same_origin (test_integration.ServerTests.test_mutation_requires_same_origin) ... ok
+test_mutation_requires_token (test_integration.ServerTests.test_mutation_requires_token) ... ok
+test_no_order_route (test_integration.ServerTests.test_no_order_route) ... ok
+test_no_path_traversal (test_integration.ServerTests.test_no_path_traversal) ... ok
+test_page_and_csp (test_integration.ServerTests.test_page_and_csp) ... ok
+test_pause_control (test_integration.ServerTests.test_pause_control) ... ok
+test_static_javascript (test_integration.ServerTests.test_static_javascript) ... ok
+
+----------------------------------------------------------------------
+Ran 153 tests in 6.356s
+
+OK

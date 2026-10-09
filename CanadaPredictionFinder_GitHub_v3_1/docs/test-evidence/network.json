@@ -1,0 +1,15 @@
+{
+  "python": "3.13.5",
+  "platform": "linux",
+  "data_directory": "/mnt/data/v3_checks/network",
+  "live_execution": "NOT IMPLEMENTED",
+  "network_checked": true,
+  "checks": {
+    "data_writable": true,
+    "timezone_available": true,
+    "config_valid": true,
+    "public_feed_reachable": false
+  },
+  "network_error": "Read-only source failed: URLError: <urlopen error [Errno -3] Temporary failure in name resolution>",
+  "ok": false
+}
