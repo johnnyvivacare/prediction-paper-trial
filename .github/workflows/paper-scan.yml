@@ -1,177 +1,7 @@
-
-Loading older messages…
-https://github.com/johnnyvivacare/prediction-paper-trial/
-okay check whats next
-
-
-Worked for 2m 50s
-Next is getting the first manual paper scan to pass, then enabling automatic runs.
-
-I tried your repository, Actions page, and raw source files, but GitHub isn’t returning them through my reader. I haven’t verified your upload or run results. That does not mean your upload failed. These steps are checked against the actual v3.1 package you received.
-
-1. Check that GitHub recognizes the workflows
-Open your repository’s Actions tab. You should see Offline safety tests and Prediction paper trial. Check that the latest Offline safety tests run has a green check. 
-
-When those workflows are missing, check that the hidden .github folder was uploaded at the repository’s top level—not inside another enclosing folder. On your Mac, Command–Shift–Period shows hidden files. Uploading only the ZIP is not enough. 
-
-2. Add the encryption secret, unless already configured
-In your Mac’s Terminal, run:
-
-openssl rand -hex 32
-
-Save the generated value in your password manager. On GitHub, open Settings → Secrets and variables → Actions → Secrets → New repository secret:
-
-Field	Enter
-Name	STATE_PASSPHRASE
-Secret	The random value you generated
-Do not paste that value here or upload it as a file. It protects the saved paper account; it is not a brokerage API key. Keep an existing working secret unchanged. 
- 
-
-3. Initialize once, then test a scan
-Open Actions → Prediction paper trial → Run workflow, select your default branch, and use this sequence. GitHub’s manual-run button appears inside the individual workflow page. 
-
-Run	Select under operation	When
-First-time setup	initialize	Once only. Skip this if initialization already succeeded.
-First market-data test	scan	After successful initialization
-Check the scan’s result and summary, not just the offline test result. This is the first verification that market access and saving work on your GitHub runner. 
- 
-
-4. Enable automation after the manual scan works
-Open Settings → Secrets and variables → Actions → Variables → New repository variable and add:
-
-Name	Value
-ENABLE_PAPER_SCANS	true
-The default trial runs for seven days from initialization, using five scans approximately one minute apart within scheduled batches. Gaps are possible; it is not uninterrupted one-minute coverage. Your Mac can then be off. 
- 
-
-For a private repository, review Actions billing before enabling scans. The package requires ACK_PRIVATE_ACTIONS_COSTS=true to acknowledge potential charges. 
- 
-
-The dashboard can come afterward: Settings → Pages → Source: GitHub Actions, then add PUBLISH_PAPER_SUMMARY=true as a repository variable and run another scan. This publishes aggregate paper results publicly. 
-
-Send a screenshot of your Actions tab showing the workflow names and latest run results—without any secrets—to pinpoint which step remains.
-
-i dont want my mac to do anything - just github
-
-Worked for 2m 6s
-Yes—GitHub only. No Terminal, no Python installation, and no need to leave your Mac on. The GitHub edition is designed to run on GitHub’s hosted computers, not yours. 
- 
-
-Ignore my previous Mac Terminal instruction. That was only for generating an encryption password; it wasn’t necessary to use Terminal.
-
-Do the remaining setup entirely on GitHub’s website
-1. Add the secret, unless you already have it.
-In your repository, open Settings → Secrets and variables → Actions → Secrets → New repository secret. Name it STATE_PASSPHRASE and use a long, randomly generated password from your password manager as its value. Keep a private backup; don’t put it in the code or this chat. Leave an existing working secret unchanged. 
- 
- 
-
-2. Start the paper account and test it.
-Go to Actions → Prediction paper trial → Run workflow. Run initialize once only, then run scan. Skip initialization if it already succeeded. Both operations run on GitHub. 
-
-3. Enable automatic scanning after the test succeeds.
-Under Settings → Secrets and variables → Actions → Variables, add:
-
-Variable name	Value
-ENABLE_PAPER_SCANS	true
-The package then schedules scans on GitHub for its default seven-day trial, even with your Mac switched off. Scans run in batches, so uninterrupted one-minute coverage is not guaranteed. 
- 
-
-Nothing needs to run on your Mac. I have not yet verified that your repository’s first scan has succeeded.
-
-User attachment
-i cant run it
-
-Worked for 3m 35s
-That screen explains it: GitHub isn’t detecting the bot’s workflow files, so there’s nothing to run yet. Most likely, the hidden .github folder was missed during upload or ended up inside another folder. GitHub requires the workflow files in .github/workflows at the repository’s top level. 
-
-Don’t select Anaconda, Jekyll, or any of those templates. We already have the correct workflows. I’ve extracted them from your ZIP to make this easier.
-
-Fix it directly on GitHub
-1. Check the uploaded code
-Click Code at the top left. You should have the finder and github_support folders directly in the main file list.
-
-If you see only a ZIP or one enclosing CanadaPredictionFinder… folder, stop here and send a screenshot of the Code tab. That layout needs correcting first; adding a workflow alone won’t fix it.
-
-2. Add the scanner workflow
-From the repository’s main Code page, click Add file → Create new file.
-
-In the filename box, enter this entire path:
-
-.github/workflows/paper-scan.yml
-GitHub can create the folders as part of the filename. 
-
-Open this text file and copy all its contents into GitHub’s large code editor:
-
-Then click Commit changes, choose the option to commit directly to your default branch—usually main—and confirm. The file you create on GitHub must end in .yml, not .txt. 
-
-3. Add the safety-test workflow
-Repeat Add file → Create new file, using:
-
-.github/workflows/tests.yml
-Copy the contents of this second file into the editor, then Commit changes:
-
-These are the original package’s two workflow files, unchanged—not a replacement bot.
-
-After both files are committed
-Return to Actions. You should now see Offline safety tests and Prediction paper trial, rather than the template-selection screen.
-
-Once the safety tests pass and your STATE_PASSPHRASE secret is saved, open Prediction paper trial → Run workflow, run initialize once, then scan. Skip initialization if it has already succeeded. 
- 
-
-All bot execution stays on GitHub. Nothing needs to be installed or left running on your Mac. 
-
-
-paper-scan_COPY_INTO_GITHUB.txt
-Document
-
-tests_COPY_INTO_GITHUB.txt
-Document
-User attachment
-User attachment
-im not sure whats going on
-
-Worked for 7m 6s
-You added the two workflow files correctly. The second screenshot reveals the remaining issue: the bot itself is inside CanadaPredictionFinder_GitHub_v3_1, but my original workflows look for its code at the repository’s top level. My setup instructions should have handled that layout. 
-
-Don’t delete anything or upload the project again. I’ve prepared two corrected workflows that work with the folder exactly where you put it.
-
-1. Replace the contents of tests.yml
-Go into .github/workflows, the folder shown in your first screenshot, and click tests.yml.
-
-Click the pencil icon to edit. Select all the text inside the code editor and replace it with everything from this file:
-
-Click Commit changes, choose Commit directly to the main branch, and confirm. Keep the filename tests.yml unchanged. GitHub supports making this edit directly in your browser. 
-
-2. Do the same for paper-scan.yml
-Open paper-scan.yml in that same .github/workflows folder, click the pencil, and replace its entire contents with:
-
-Then Commit changes to main. Keep the filename paper-scan.yml unchanged.
-
-These are replacements for the two existing files—not additional .txt files to upload.
-
-3. Check the safety-test result
-Open Actions → Offline safety tests and select the newest run. The test workflow is configured to run when you commit these changes. 
-
-Our next checkpoint is a green check on that run. Leave initialization, scanning settings, and the dashboard alone for now.
-
-I tested this fix using the original package arranged like your screenshots: all 153 offline tests passed in my test environment. Your actual GitHub run still needs confirmation. The corrected workflows prepare the files on GitHub’s runner; nothing needs to be installed or run on your Mac.
-
-Send me the newest Actions run’s result; if it is red, open the failed step so the screenshot includes the error.
-
-
-tests_FOLDER_FIX.txt
-Document
-
-paper-scan_FOLDER_FIX.txt
-Document
-
-
-
 name: Prediction paper trial
+run-name: Paper trial - ${{ inputs.operation || 'scan' }}
 
 on:
-  # GitHub's shortest supported cron period is five minutes, not one minute.
-  # Offset avoids the top-of-hour hotspot. Execution can be delayed/dropped.
   schedule:
     - cron: '2-59/5 * * * *'
   workflow_dispatch:
@@ -183,11 +13,9 @@ on:
         default: scan
         required: true
 
-# Only this workflow can write the state branch; PR tests receive no write token.
 permissions:
   contents: read
 
-# One writer, including manual runs. Do not cancel a running checkpoint writer.
 concurrency:
   group: prediction-paper-state-writer
   cancel-in-progress: false
@@ -200,18 +28,23 @@ jobs:
       (github.event_name == 'workflow_dispatch' || vars.ENABLE_PAPER_SCANS == 'true')
     runs-on: ubuntu-24.04
     timeout-minutes: 12
+    defaults:
+      run:
+        shell: bash
     permissions:
       contents: write
-      actions: write # Only used to disable this workflow when its trial expires.
+      actions: write
     outputs:
       report_ready: ${{ steps.run.outputs.report_ready }}
     steps:
       - name: Check out trusted default-branch code
-        uses: actions/checkout@v4.4.0
+        uses: actions/checkout@v4
+
       - name: Set up Python
         uses: actions/setup-python@v6
         with:
           python-version: '3.12'
+
       - name: Prepare uploaded bot files on the GitHub runner
         shell: bash
         run: |
@@ -233,8 +66,6 @@ jobs:
           if complete(root):
               print("Bot files already at the runner root; no copy needed.")
           elif complete(nested):
-              # Only the temporary runner checkout is changed. Nothing is pushed to main.
-              # Refuse a mixed/partial layout rather than overwrite any existing code.
               if any((root / name).exists() or (root / name).is_symlink() for name in names):
                   raise SystemExit("Mixed upload layout: bot files exist at both levels. Stop and review; nothing was overwritten.")
               for name in files:
@@ -248,12 +79,14 @@ jobs:
           if not complete(root):
               raise SystemExit("Runner preparation did not complete; stopping before the bot runs.")
           PY
+
       - name: Check checkpoint tools
         run: |
           set -euo pipefail
           command -v gpg
           command -v gh
           python -m compileall -q github_support finder
+
       - name: Restore, run paper test, audit and save encrypted checkpoint
         id: run
         env:
@@ -270,6 +103,7 @@ jobs:
             args+=(--confirm-initialize)
           fi
           python -m github_support.runner "${args[@]}"
+
       - name: Disable scheduled runs on expiry or unsafe state failure
         if: >-
           always() && (steps.run.outputs.trial_expired == 'true' ||
@@ -277,8 +111,7 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: gh workflow disable paper-scan.yml
-      # Encrypted bytes only: daily best-effort backup or failed-checkpoint recovery.
-      # The state branch is the primary checkpoint; no application logs are uploaded.
+
       - name: Keep encrypted recovery checkpoint
         if: always() && (failure() || steps.run.outputs.backup_checkpoint == 'true')
         uses: actions/upload-artifact@v4
@@ -287,6 +120,7 @@ jobs:
           path: ${{ runner.temp }}/prediction-output/state.gpg
           if-no-files-found: ignore
           retention-days: 7
+
       - name: Prepare optional public report
         if: >-
           always() && steps.run.outputs.report_ready == 'true' &&
