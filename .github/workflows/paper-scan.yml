@@ -130,15 +130,40 @@ User attachment
 User attachment
 im not sure whats going on
 
-Inspected workflow files
+Worked for 7m 6s
+You added the two workflow files correctly. The second screenshot reveals the remaining issue: the bot itself is inside CanadaPredictionFinder_GitHub_v3_1, but my original workflows look for its code at the repository’s top level. My setup instructions should have handled that layout. 
 
-I can see the problem: the workflow files are correctly placed, but the bot code is nested one folder too deep. We can fix this directly on GitHub.
+Don’t delete anything or upload the project again. I’ve prepared two corrected workflows that work with the folder exactly where you put it.
+
+1. Replace the contents of tests.yml
+Go into .github/workflows, the folder shown in your first screenshot, and click tests.yml.
+
+Click the pencil icon to edit. Select all the text inside the code editor and replace it with everything from this file:
+
+Click Commit changes, choose Commit directly to the main branch, and confirm. Keep the filename tests.yml unchanged. GitHub supports making this edit directly in your browser. 
+
+2. Do the same for paper-scan.yml
+Open paper-scan.yml in that same .github/workflows folder, click the pencil, and replace its entire contents with:
+
+Then Commit changes to main. Keep the filename paper-scan.yml unchanged.
+
+These are replacements for the two existing files—not additional .txt files to upload.
+
+3. Check the safety-test result
+Open Actions → Offline safety tests and select the newest run. The test workflow is configured to run when you commit these changes. 
+
+Our next checkpoint is a green check on that run. Leave initialization, scanning settings, and the dashboard alone for now.
+
+I tested this fix using the original package arranged like your screenshots: all 153 offline tests passed in my test environment. Your actual GitHub run still needs confirmation. The corrected workflows prepare the files on GitHub’s runner; nothing needs to be installed or run on your Mac.
+
+Send me the newest Actions run’s result; if it is red, open the failed step so the screenshot includes the error.
 
 
-Searched 1 website
+tests_FOLDER_FIX.txt
+Document
 
-Fixed nested GitHub workflow paths
-
+paper-scan_FOLDER_FIX.txt
+Document
 
 
 
@@ -187,6 +212,42 @@ jobs:
         uses: actions/setup-python@v6
         with:
           python-version: '3.12'
+      - name: Prepare uploaded bot files on the GitHub runner
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+          import shutil
+
+          root = Path.cwd()
+          nested = root / "CanadaPredictionFinder_GitHub_v3_1"
+          files = ("app.py", "github_profile.json")
+          dirs = ("finder", "github_support", "tests")
+          names = files + dirs
+
+          def complete(folder):
+              return (all((folder / name).is_file() for name in files)
+                      and all((folder / name).is_dir() for name in dirs))
+
+          if complete(root):
+              print("Bot files already at the runner root; no copy needed.")
+          elif complete(nested):
+              # Only the temporary runner checkout is changed. Nothing is pushed to main.
+              # Refuse a mixed/partial layout rather than overwrite any existing code.
+              if any((root / name).exists() or (root / name).is_symlink() for name in names):
+                  raise SystemExit("Mixed upload layout: bot files exist at both levels. Stop and review; nothing was overwritten.")
+              for name in files:
+                  shutil.copy2(nested / name, root / name)
+              for name in dirs:
+                  shutil.copytree(nested / name, root / name)
+              print("Bot loaded from CanadaPredictionFinder_GitHub_v3_1 on this GitHub runner.")
+          else:
+              raise SystemExit("Bot files are incomplete. Expected app.py, github_profile.json, finder, github_support and tests at the top level or inside CanadaPredictionFinder_GitHub_v3_1.")
+
+          if not complete(root):
+              raise SystemExit("Runner preparation did not complete; stopping before the bot runs.")
+          PY
       - name: Check checkpoint tools
         run: |
           set -euo pipefail
