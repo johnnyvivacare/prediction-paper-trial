@@ -1,0 +1,81 @@
+name: Inspect saved feed error
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  inspect:
+    if: github.ref_name == github.event.repository.default_branch && !github.event.repository.fork
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - name: Check out trusted code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+
+      - name: Read saved feed error without changing the account
+        working-directory: CanadaPredictionFinder_GitHub_v3_1
+        shell: bash
+        env:
+          STATE_PASSPHRASE: ${{ secrets.STATE_PASSPHRASE }}
+        run: |
+          python - <<'PY'
+          import json
+          import os
+          import sqlite3
+          import tempfile
+          from contextlib import closing
+          from pathlib import Path
+
+          from github_support.state import GitState, StateError, restore_checkpoint, passphrase
+
+          secret = passphrase(os.environ.get("STATE_PASSPHRASE", ""))
+          repository = os.environ["GITHUB_REPOSITORY"]
+          root = Path(os.environ["GITHUB_WORKSPACE"])
+
+          try:
+              with tempfile.TemporaryDirectory(prefix="feed-diagnosis-") as td:
+                  folder = Path(td)
+                  incoming = folder / "state.gpg"
+                  GitState(root).fetch(incoming, initialize=False)
+                  restore_checkpoint(incoming, folder / "saved", secret, repository)
+                  database = folder / "saved" / "ledger.sqlite3"
+                  with closing(sqlite3.connect(database.as_uri() + "?mode=ro", uri=True)) as db:
+                      row = db.execute("SELECT value FROM meta WHERE key='github_source_cache'").fetchone()
+                      health = json.loads(row[0]).get("health", {}) if row else {}
+                      events = db.execute(
+                          "SELECT kind,note FROM events WHERE kind IN "
+                          "('CATALOG_NOTICE','SOURCE_ERROR','SOURCE_NOTICE') "
+                          "ORDER BY id DESC LIMIT 20"
+                      ).fetchall()
+                  report = {
+                      "feed_state": health.get("state", "UNKNOWN"),
+                      "feed_detail": health.get("note", "No saved feed detail"),
+                      "catalog_errors": health.get("catalog_errors", []),
+                      "recent_feed_messages_newest_first": [
+                          {"kind": kind, "message": note[:1000]} for kind, note in events
+                      ],
+                  }
+          except Exception as exc:
+              report = {"diagnostic_error": str(exc) if isinstance(exc, StateError)
+                        else "Could not read saved diagnostics: " + type(exc).__name__}
+
+          # Print only feed-diagnostic fields. Never print the secret, balances or trades.
+          text = json.dumps(report, indent=2, ensure_ascii=True)
+          text = text.replace(secret, "[REDACTED]")
+          text = text.replace(json.dumps(secret, ensure_ascii=True)[1:-1], "[REDACTED]")
+          text = text.replace("`", "\\u0060").replace("<", "\\u003c").replace(">", "\\u003e")
+          summary = "## Saved feed diagnosis\n\n```json\n" + text + "\n```\n"
+          summary += "\nRead-only diagnosis. No scans, orders, account resets or state uploads were performed.\n"
+          print(summary)
+          with open(os.environ["GITHUB_STEP_SUMMARY"], "a", encoding="utf-8") as f:
+              f.write(summary)
+          raise SystemExit(1 if "diagnostic_error" in report else 0)
+          PY
